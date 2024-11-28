@@ -25,9 +25,9 @@ Route::put('/admin-dashboard/users/{user}', [UsersController::class, 'update'])-
 
 //staff route
 Route::get('/staff-dashboard',[DashboardStaffController::class,"index"]);
-Route::get('/staff-dashboard/profile',[DashboardStaffController::class,"profile"]);
-Route::get('/edit-profile', [DashboardStaffController::class, 'editProfile'])->name('edit.profile');
+Route::get('/staff-dashboard/profile', [DashboardStaffController::class, 'profile']);
 Route::get('/profile/edit', [DashboardStaffController::class, 'edit'])->name('edit.profile');
 Route::post('/profile/update', [DashboardStaffController::class, 'update'])->name('update.profile');
+
 
 

@@ -7,75 +7,90 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardStaffController extends Controller
 {
-    public function index(){
-        return view('dashboard.staff.index',[
-            'title' => 'staff-dashboard'
+    public function index()
+    {
+        return view('dashboard.staff.index', [
+            'title' => 'staff-dashboard',
         ]);
     }
 
-    public function profile(){
-        return view('dashboard.staff.profile',[
-            'title' => 'profile'
+    public function profile()
+    {
+        return view('dashboard.staff.profile', [
+            'title' => 'profile',
         ]);
     }
 
-    public function editProfile(){
-        return view('dashboard.staff.profile',[
-            'title' => 'profile'
+    public function edit()
+    {
+        return view('dashboard.staff.edit-profile', [
+            'title' => 'Edit Profil',
+            'detailUser' => Auth::user()->detailUser,
         ]);
     }
 
-        // Menampilkan form edit profil
-        public function edit()
-        {
-            return view('dashboard.staff.edit-profile', [
-                'title' => 'Edit Profil',
-                'detailUser' => Auth::user()->detailUser,
-            ]);
-        }
+    public function update(Request $request)
+    {
+        $request->validate([
+            'nik' => 'required|string|max:20',
+            'jenis_kelamin' => 'required|string',
+            'tempat_lahir' => 'required|string',
+            'tanggal_lahir' => 'required|date',
+            'status' => 'required|string',
+            'alamat' => 'required|string',
+            'divisi' => 'nullable|string',
+            'jabatan' => 'nullable|string',
+            'no_telepon' => 'required|string',
+            'instagram' => 'nullable|string',
+            'twiter' => 'nullable|string',
+            'linkedin' => 'nullable|string',
+            'pendidikan_terakhir' => 'nullable|string',
+            'nama_institusi' => 'nullable|string',
+            'jurusan' => 'nullable|string',
+            'tahun_lulus' => 'nullable',
+        ]);
+
     
-        // Menyimpan perubahan profil
-        public function update(Request $request)
-        {
-            // Validasi semua field wajib diisi
-            $validated = $request->validate([
-                'nik' => 'required|string|max:20',
-                'alamat' => 'required|string|max:255',
-                'no_telepon' => 'required|string|max:15',
-                'tanggal_lahir' => 'required|date',
-                'jenis_kelamin' => 'required|in:laki-laki,perempuan',
-                'riwayat_pendidikan' => 'required|string|max:500',
-                'posisi_dilamar' => 'required|string|max:255',
-            ]);
-        
-            // Mendapatkan detailUser user yang sedang login
-            $detailUser = Auth::user()->detailUser;
-        
-            if ($detailUser) {
-                // Update data di detail_users
-                $detailUser->update($validated);
-            } else {
-                // Jika belum ada data di detail_users, buat baru
-                $detailUser = Auth::user()->detailUser()->create($validated);
-            }
-        
-            // Jika semua data detail_users sudah diisi, ubah status user menjadi 'verify'
-            if ($this->isDetailUserComplete($detailUser)) {
-                Auth::user()->update(['status' => 'verify']);
-            }
-            return redirect('staff-dashboard/profile')->with('success', 'Profil berhasil diperbarui.');
-        }
-        
-        // Metode tambahan untuk memeriksa apakah semua data detail_users sudah lengkap
-        private function isDetailUserComplete($detailUser)
-        {
-            // Pastikan semua kolom di detail_users tidak kosong
-            return $detailUser->nik &&
-                   $detailUser->alamat &&
-                   $detailUser->no_telepon &&
-                   $detailUser->tanggal_lahir &&
-                   $detailUser->jenis_kelamin &&
-                   $detailUser->riwayat_pendidikan &&
-                   $detailUser->posisi_dilamar;
-        }
+        // Update user data
+        $user = auth()->user();
+    
+        // Cek apakah semua field data diri telah diisi lengkap
+        $allFieldsFilled = $request->has('nik') && 
+                           $request->has('jenis_kelamin') && 
+                           $request->has('tempat_lahir') && 
+                           $request->has('tanggal_lahir') && 
+                           $request->has('alamat') && 
+                           $request->has('no_telepon');
+    
+        // Update status menjadi 'verified' jika semua field terisi
+        $user->update([
+            'status' => $allFieldsFilled ? 'verify' : 'unverify', // Jika lengkap, set status jadi 'verified'
+            // Other user fields if necessary
+        ]);
+
+    
+        // Update detail user data
+        $detailUser = $user->detailUser;
+        $detailUser->update([
+            'nik' => $request->nik,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat' => $request->alamat,
+            'divisi' => $request->divisi,
+            'jabatan' => $request->jabatan,
+            'no_telepon' => $request->no_telepon,
+            'instagram' => $request->instagram,
+            'twiter' => $request->twiter,
+            'linkedin' => $request->linkedin,
+            'pendidikan_terakhir' => $request->pendidikan_terakhir,
+            'nama_institusi' => $request->nama_institusi,
+            'jurusan' => $request->jurusan,
+            'tahun_lulus' => $request->tahun_lulus,
+        ]);
+    
+        return redirect('/staff-dashboard/profile')->with('success', 'Profil berhasil diperbarui.');
+    }
+    
+    
 }

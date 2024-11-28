@@ -6,35 +6,83 @@
     <div class="card shadow p-4">
         @if (auth()->user()->detailUser)
             <form>
+                <!-- Data Pribadi -->
+                <h3 class="mb-3">Data Pribadi</h3>
                 <div class="mb-3">
                     <label for="nik" class="form-label">NIK</label>
                     <input type="text" id="nik" class="form-control" value="{{ auth()->user()->detailUser->nik ?? 'Data kosong' }}" disabled>
-                </div>
-                <div class="mb-3">
-                    <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" id="alamat" class="form-control" value="{{ auth()->user()->detailUser->alamat ?? 'Data kosong' }}" disabled>
-                </div>
-                <div class="mb-3">
-                    <label for="no_telepon" class="form-label">Nomor Telepon</label>
-                    <input type="text" id="no_telepon" class="form-control" value="{{ auth()->user()->detailUser->no_telepon ?? 'Data kosong' }}" disabled>
-                </div>
-                <div class="mb-3">
-                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                    <input type="text" id="tanggal_lahir" class="form-control" value="{{ auth()->user()->detailUser->tanggal_lahir ?? 'Data kosong' }}" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                     <input type="text" id="jenis_kelamin" class="form-control" value="{{ ucfirst(auth()->user()->detailUser->jenis_kelamin) ?? 'Data kosong' }}" disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="riwayat_pendidikan" class="form-label">Riwayat Pendidikan</label>
-                    <textarea id="riwayat_pendidikan" class="form-control" rows="2" disabled>{{ auth()->user()->detailUser->riwayat_pendidikan ?? 'Data kosong' }}</textarea>
+                    <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
+                    <input type="text" id="tempat_lahir" class="form-control" value="{{ auth()->user()->detailUser->tempat_lahir ?? 'Data kosong' }}" disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="posisi_dilamar" class="form-label">Posisi Dilamar</label>
-                    <input type="text" id="posisi_dilamar" class="form-control" value="{{ auth()->user()->detailUser->posisi_dilamar ?? 'Data kosong' }}" disabled>
+                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                    <input type="text" id="tanggal_lahir" class="form-control" value="{{ auth()->user()->detailUser->tanggal_lahir ?? 'Data kosong' }}" disabled>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <input type="text" id="status" class="form-control" value="{{ ucfirst(auth()->user()->detailUser->status) ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="alamat_lengkap" class="form-label">Alamat Lengkap</label>
+                    <textarea id="alamat_lengkap" class="form-control" rows="2" disabled>{{ auth()->user()->detailUser->alamat ?? 'Data kosong' }}</textarea>
+                </div>
+
+                <!-- Posisi dan Jabatan -->
+                <h3 class="mt-4 mb-3">Posisi dan Jabatan</h3>
+                <div class="mb-3">
+                    <label for="divisi" class="form-label">Divisi</label>
+                    <input type="text" id="divisi" class="form-control" value="{{ auth()->user()->detailUser->divisi ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="jabatan" class="form-label">Jabatan</label>
+                    <input type="text" id="jabatan" class="form-control" value="{{ auth()->user()->detailUser->jabatan ?? 'Data kosong' }}" disabled>
+                </div>
+
+                <!-- Informasi Kontak -->
+                <h3 class="mt-4 mb-3">Informasi Kontak</h3>
+                <div class="mb-3">
+                    <label for="no_telepon" class="form-label">Nomor Telepon</label>
+                    <input type="text" id="no_telepon" class="form-control" value="{{ auth()->user()->detailUser->no_telepon ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="instagram" class="form-label">Instagram</label>
+                    <input type="text" id="instagram" class="form-control" value="{{ auth()->user()->detailUser->instagram ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="twiter" class="form-label">Twitter</label>
+                    <input type="text" id="twiter" class="form-control" value="{{ auth()->user()->detailUser->twiter ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="linkedin" class="form-label">LinkedIn</label>
+                    <input type="text" id="linkedin" class="form-control" value="{{ auth()->user()->detailUser->linkedin ?? 'Data kosong' }}" disabled>
+                </div>
+
+                <!-- Riwayat Pendidikan -->
+                <h3 class="mt-4 mb-3">Riwayat Pendidikan</h3>
+                <div class="mb-3">
+                    <label for="pendidikan_terakhir" class="form-label">Pendidikan Terakhir</label>
+                    <input type="text" id="pendidikan_terakhir" class="form-control" value="{{ auth()->user()->detailUser->pendidikan_terakhir ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="nama_institusi" class="form-label">Nama Institusi</label>
+                    <input type="text" id="nama_institusi" class="form-control" value="{{ auth()->user()->detailUser->nama_institusi ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="jurusan" class="form-label">Jurusan</label>
+                    <input type="text" id="jurusan" class="form-control" value="{{ auth()->user()->detailUser->jurusan ?? 'Data kosong' }}" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="tahun_lulus" class="form-label">Tahun Lulus</label>
+                    <input type="text" id="tahun_lulus" class="form-control" value="{{ auth()->user()->detailUser->tahun_lulus ?? 'Data kosong' }}" disabled>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
                     <a href="{{ route('edit.profile') }}" class="btn btn-primary">Edit Profil</a>
                 </div>
             </form>
