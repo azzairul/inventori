@@ -25,12 +25,10 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable(); // Jenis Kelamin
             $table->enum('status', ['belum menikah', 'menikah','bercerai'])->nullable(); // Jenis Kelamin
             $table->enum('pendidikan_terakhir', ['SMA/SMK', 'Mahasiswa','S1','S2','S3'])->nullable(); // Jenis Kelamin
-            $table->string('posisi')->nullable(); // Posisi yang Dilamar
             $table->string('nama_institusi')->nullable(); // Posisi yang Dilamar
             $table->string('jabatan')->nullable(); // Posisi yang Dilamar
             $table->string('jurusan')->nullable(); // Posisi yang Dilamar
             $table->date('tahun_lulus')->nullable(); // Posisi yang Dilamar
-            $table->date('alamat lengkap')->nullable(); // Posisi yang Dilamar
             $table->string('divisi')->nullable(); // Posisi yang Dilamar
 
             $table->timestamps();

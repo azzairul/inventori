@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +32,7 @@ class DashboardStaffController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nik' => 'required|string|max:20',
             'jenis_kelamin' => 'required|string',
             'tempat_lahir' => 'required|string',
@@ -68,26 +69,11 @@ class DashboardStaffController extends Controller
             // Other user fields if necessary
         ]);
 
+
     
         // Update detail user data
-        $detailUser = $user->detailUser;
-        $detailUser->update([
-            'nik' => $request->nik,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'alamat' => $request->alamat,
-            'divisi' => $request->divisi,
-            'jabatan' => $request->jabatan,
-            'no_telepon' => $request->no_telepon,
-            'instagram' => $request->instagram,
-            'twiter' => $request->twiter,
-            'linkedin' => $request->linkedin,
-            'pendidikan_terakhir' => $request->pendidikan_terakhir,
-            'nama_institusi' => $request->nama_institusi,
-            'jurusan' => $request->jurusan,
-            'tahun_lulus' => $request->tahun_lulus,
-        ]);
+        DetailUser::where('user_id', $user->id)->update($validated);
+
     
         return redirect('/staff-dashboard/profile')->with('success', 'Profil berhasil diperbarui.');
     }
