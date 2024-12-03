@@ -17,6 +17,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('/dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -34,7 +36,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">G-INVENTORY</div>
             </a>
 
             <!-- Divider -->
@@ -56,35 +58,121 @@
     Interface
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item {{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'active' : '' }}">
-    <a class="nav-link collapsed {{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? '' : 'collapsed' }}" 
-        href="#" 
-        data-toggle="collapse" 
-        data-target="#collapseTwo" 
-        aria-expanded="{{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'true' : 'false' }}" 
-        aria-controls="collapseTwo">
-        <i class="fas fa-database"></i>
-        <span>Data Master</span>
-    </a>
-    <div id="collapseTwo" class="collapse {{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Data List :</h6>
-            <a class="collapse-item {{ request()->is('admin-dashboard/master-karyawan') ? 'active' : '' }}" href="/admin-dashboard/master-karyawan">Master Karyawan</a>
-            <a class="collapse-item {{ request()->is('admin-dashboard/kategori') ? 'active' : '' }}" href="/admin-dashboard/kategori">Kategori</a>
-            <a class="collapse-item {{ request()->is('admin-dashboard/barang') ? 'active' : '' }}" href="/admin-dashboard/barang">Barang</a>
-            <a class="collapse-item {{ request()->is('admin-dashboard/users') ? 'active' : '' }}" href="/admin-dashboard/users">Users</a>
-        </div>
-    </div>
-</li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item {{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'active' : '' }}">
+                <a class="nav-link {{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? '' : 'collapsed' }}" 
+                    href="#" 
+                    data-toggle="collapse" 
+                    data-target="#collapseTwo" 
+                    aria-expanded="{{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'true' : 'false' }}" 
+                    aria-controls="collapseTwo">
+                    <i class="fas fa-folder-open"></i> <!-- Menggunakan ikon folder terbuka -->
+                    <span>Data Master</span>
+                </a>
+                <div id="collapseTwo" class="collapse {{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'show' : '' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Data List :</h6>
+                        <a class="collapse-item {{ request()->is('admin-dashboard/master-karyawan') ? 'active' : '' }}" href="/admin-dashboard/master-karyawan">
+                            <i class="fas fa-users"></i> <!-- Ikon untuk karyawan -->
+                            Master Karyawan
+                        </a>
+                        <a class="collapse-item {{ request()->is('admin-dashboard/kategori') ? 'active' : '' }}" href="/admin-dashboard/kategori">
+                            <i class="fas fa-tags"></i> <!-- Ikon untuk kategori -->
+                            Kategori
+                        </a>
+                        <a class="collapse-item {{ request()->is('admin-dashboard/barang') ? 'active' : '' }}" href="/admin-dashboard/barang">
+                            <i class="fas fa-box"></i> <!-- Ikon untuk barang -->
+                            Barang
+                        </a>
+                        <a class="collapse-item {{ request()->is('admin-dashboard/users') ? 'active' : '' }}" href="/admin-dashboard/users">
+                            <i class="fas fa-user-circle"></i> <!-- Ikon untuk users -->
+                            User
+                        </a>
+                    </div>
+                </div>
+            </li>
 
-            
+                                <!-- Menu Navigasi - Menu Pengajuan -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProcess"
+                            aria-expanded="true" aria-controls="collapseProcess">
+                            <i class="fas fa-file-alt"></i> <!-- Ikon dokumen untuk Pengajuan -->
+                            <span>Pengajuan</span>
+                        </a>
+                        <div id="collapseProcess" class="collapse" aria-labelledby="headingProcess"
+                            data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Custom Pengajuan:</h6>
+                                <a class="collapse-item" href="peminjaman.html">
+                                    <i class="fas fa-handshake"></i> <!-- Ikon handshake untuk Peminjaman -->
+                                    Peminjaman
+                                </a>
+                                <a class="collapse-item" href="pengembalian.html">
+                                    <i class="fas fa-undo-alt"></i> <!-- Ikon undo untuk Pengembalian -->
+                                    Pengembalian
+                                </a>
+                            </div>
+                        </div>
+                    </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-          
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                            <!-- Menu Navigasi - Menu Arsip -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArchive"
+                            aria-expanded="true" aria-controls="collapseArchive">
+                            <i class="fas fa-archive"></i> <!-- Ikon arsip untuk menu utama Arsip -->
+                            <span>Arsip</span>
+                        </a>
+                        <div id="collapseArchive" class="collapse" aria-labelledby="headingArchive"
+                            data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Custom Arsip:</h6>
+                                <a class="collapse-item" href="dokumentasi.html">
+                                    <i class="fas fa-camera"></i> <!-- Ikon kamera untuk Dokumentasi -->
+                                    Dokumentasi
+                                </a>
+                                <a class="collapse-item" href="kategori-dokumentasi.html">
+                                    <i class="fas fa-folder"></i> <!-- Ikon folder untuk Kategori Dokumentasi -->
+                                    Kategori Dokumentasi
+                                </a>
+                                <a class="collapse-item" href="dokumen.html">
+                                    <i class="fas fa-file-alt"></i> <!-- Ikon dokumen untuk Dokumen -->
+                                    Dokumen
+                                </a>
+                                <a class="collapse-item" href="kategori-dokumen.html">
+                                    <i class="fas fa-folder-open"></i> <!-- Ikon folder terbuka untuk Kategori Dokumen -->
+                                    Kategori Dokumen
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+
+
+                                    <!-- Nav Item - Reports Collapse Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReports"
+                            aria-expanded="true" aria-controls="collapseReports">
+                            <i class="fas fa-chart-line"></i> <!-- Ikon grafik garis untuk Laporan -->
+                            <span>Laporan</span>
+                        </a>
+                        <div id="collapseReports" class="collapse" aria-labelledby="headingReports"
+                            data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Laporan Proses:</h6>
+                                <a class="collapse-item" href="laporan-peminjaman.html">
+                                    <i class="fas fa-file-contract"></i> <!-- Ikon dokumen kontrak untuk Laporan Peminjaman -->
+                                    Laporan Peminjaman
+                                </a>
+                                <a class="collapse-item" href="laporan-pengembalian.html">
+                                    <i class="fas fa-clipboard-check"></i> <!-- Ikon clipboard dengan cek untuk Laporan Pengembalian -->
+                                    Laporan Pengembalian
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+           
 
 
 
@@ -105,20 +193,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
+                   
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -297,22 +372,22 @@
                         </li>
 
                     </ul>
-
                 </nav>
+            
                 @yield('content')
-
             </div>
+
             <!-- End of Main Content -->
 
             <!-- Footer -->
+            <!-- End of Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; G-INVENTORY 2024</span>
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

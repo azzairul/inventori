@@ -13,12 +13,14 @@
 
     <!-- Custom fonts for this template -->
     <link href="{{ asset('/dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('/dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+
 
 </head>
 
@@ -36,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">G-INVENTORY</div>
             </a>
 
             <!-- Divider -->
@@ -55,7 +57,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Menu
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -66,29 +68,59 @@
                     aria-expanded="{{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'true' : 'false' }}"
                     aria-controls="collapseTwo">
                     <i class="fas fa-database"></i>
-                    <span>Data Master</span>
+                    <span>Pengajuan </span>
                 </a>
                 <div id="collapseTwo"
                     class="collapse {{ request()->is('admin-dashboard/users') || request()->is('admin-dashboard/kategori') || request()->is('admin-dashboard/barang') || request()->is('admin-dashboard/master-karyawan') ? 'show' : '' }}"
                     aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Data List :</h6>
+                        <h6 class="collapse-header">Costum Pengajuan:</h6>
                         <a class="collapse-item {{ request()->is('admin-dashboard/users') ? 'active' : '' }}"
-                            href="/admin-dashboard/users">Peminjaman</a>
+                            href="/admin-dashboard/users">
+                            <!-- Tambahkan ikon -->
+                            <i class="fa-solid fa-hand-holding"></i> Peminjaman </a>
+                        
+                        <a class="collapse-item" href="proses-pengembalian.html"><i class="fas fa-fw fa-exchange-alt"></i> Proses Pengembalian</a>
                     </div>
                 </div>
             </li>
 
+                        <!-- Menu Navigasi - Menu Proses -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProcess"
+                    aria-expanded="true" aria-controls="collapseProcess">
+                    <i class="fas fa-fw fa-history"></i> <!-- Ikon yang diperbarui untuk Riwayat -->
+                    <span>Riwayat</span>
+                </a>
+                <div id="collapseProcess" class="collapse" aria-labelledby="headingProcess" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Riwayat:</h6>
+                        <a class="collapse-item" href="peminjaman.html"><i class="fas fa-fw fa-book-reader"></i> Peminjaman</a> <!-- Ikon baru untuk Peminjaman -->
+                        <a class="collapse-item" href="pengembalian.html"><i class="fas fa-fw fa-undo-alt"></i> Pengembalian</a> <!-- Ikon baru untuk Pengembalian -->
+                    </div>
+                </div>
+            </li>
 
+            <!-- Menu Navigasi - Menu Arsip -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArchive"
+                    aria-expanded="true" aria-controls="collapseArchive">
+                    <i class="fas fa-fw fa-archive"></i> <!-- Ikon baru untuk Arsip -->
+                    <span>Arsip</span>
+                </a>
+                <div id="collapseArchive" class="collapse" aria-labelledby="headingArchive" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custum Arsip:</h6>
+                        <a class="collapse-item" href="dokumentasi.html"><i class="fas fa-fw fa-camera"></i> Dokumentasi</a> <!-- Ikon baru untuk Dokumentasi -->
+                        <a class="collapse-item" href="dokumen.html"><i class="fas fa-fw fa-file-alt"></i> Dokumen</a> <!-- Ikon baru untuk Dokumen -->
+                    </div>
+                </div>
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
 
-
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-
-
 
         </ul>
         <!-- End of Sidebar -->
@@ -106,20 +138,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small"
-                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-
+                   
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -169,8 +188,7 @@
                                     </div>
                                     <div>
                                         <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to
-                                            download!</span>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -195,8 +213,7 @@
                                         Spending Alert: We've noticed unusually high spending for your account.
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All
-                                    Alerts</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
 
@@ -216,7 +233,8 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                            alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -227,7 +245,8 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                            alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -238,20 +257,20 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                            alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy
-                                            with
+                                        <div class="text-truncate">Last month's report looks great, I am very happy with
                                             the progress so far, keep up the good work!</div>
                                         <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle"
-                                            src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -260,8 +279,7 @@
                                         <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More
-                                    Messages</a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
 
@@ -271,20 +289,24 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
-                                <img class="img-profile rounded-circle" src="/dashboard/img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
+                                <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/staff-dashboard/profile">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa-solid fa-user-gear fa-sm fa-fw me-2 text-gray-400"></i>
+                                    Akun
+                                </a>
+                                
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -292,29 +314,22 @@
                         </li>
 
                     </ul>
-
                 </nav>
-                @if (auth()->check() && auth()->user()->status === 'unverify')
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>Akun Belum Terverifikasi!</strong>
-                        Harap lengkapi data Anda agar terdaftar sebagai karyawan.Lengkapi <a
-                            href="/staff-dashboard/profile">Disini</a>
-                    </div>
-                @endif
+            
                 @yield('content')
-
             </div>
+
             <!-- End of Main Content -->
 
             <!-- Footer -->
+            <!-- End of Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; G-INVENTORY 2024</span>
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
@@ -348,27 +363,27 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('/dashboard/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="{{ asset('/dashboard/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript -->
-    <script src="{{ asset('/dashboard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<!-- Core plugin JavaScript -->
+<script src="{{ asset('/dashboard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <!-- Custom scripts for all pages -->
-    <script src="{{ asset('/dashboard/js/sb-admin-2.min.js') }}"></script>
+<!-- Custom scripts for all pages -->
+<script src="{{ asset('/dashboard/js/sb-admin-2.min.js') }}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{ asset('/dashboard/vendor/chart.js/Chart.min.js') }}"></script>
+<!-- Page level plugins -->
+<script src="{{ asset('/dashboard/vendor/chart.js/Chart.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('/dashboard/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('/dashboard/js/demo/chart-pie-demo.js') }}"></script>
+<!-- Page level custom scripts -->
+<script src="{{ asset('/dashboard/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ asset('/dashboard/js/demo/chart-pie-demo.js') }}"></script>
 
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        @if (session('success'))
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+       @if (session('success'))
             Swal.fire({
                 icon: 'success',
                 title: 'Sukses!',
@@ -377,7 +392,7 @@
                 timer: 2000
             });
         @endif
-    </script>
+</script>
 </body>
 
 </html>
