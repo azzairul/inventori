@@ -3,6 +3,7 @@
 
 <head>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}"
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +20,7 @@
     <link href="{{ asset('/dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('dashboard/css/style6.css') }}">
 
 
 </head>
@@ -46,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ request()->is('staff-dashboard') ? 'active' : '' }}">
-                <a class="nav-link" href="/admin-dashboard">
+                <a class="nav-link" href="/staff-dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -76,7 +77,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Costum Pengajuan:</h6>
                         <a class="collapse-item {{ request()->is('admin-dashboard/users') ? 'active' : '' }}"
-                            href="/admin-dashboard/users">
+                            href="staff-dashboard/peminjaman">
                             <!-- Tambahkan ikon -->
                             <i class="fa-solid fa-hand-holding"></i> Peminjaman </a>
                         
@@ -95,7 +96,7 @@
                 <div id="collapseProcess" class="collapse" aria-labelledby="headingProcess" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Riwayat:</h6>
-                        <a class="collapse-item" href="peminjaman.html"><i class="fas fa-fw fa-book-reader"></i> Peminjaman</a> <!-- Ikon baru untuk Peminjaman -->
+                        <a class="collapse-item" href={{ Route('riwayat.staff') }}><i class="fas fa-fw fa-book-reader"></i> Peminjaman</a> <!-- Ikon baru untuk Peminjaman -->
                         <a class="collapse-item" href="pengembalian.html"><i class="fas fa-fw fa-undo-alt"></i> Pengembalian</a> <!-- Ikon baru untuk Pengembalian -->
                     </div>
                 </div>
@@ -217,91 +218,25 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
+                                
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/staff-dashboard/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-user-gear fa-sm fa-fw me-2 text-gray-400"></i>
+                                <a class="dropdown-item" href="/staff/profile-UpdatePw">
+                                    <i class="fa-solid fa-user-gear fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Akun
                                 </a>
                                 
@@ -319,17 +254,103 @@
                 @yield('content')
             </div>
 
-            <!-- End of Main Content -->
-
             <!-- Footer -->
             <!-- End of Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; G-INVENTORY 2024</span>
+       
+            <footer class="footer">
+                <div class="footer-top section">
+                  <div class="container">
+                    <!-- Footer Brand -->
+                    <div class="footer-brand">
+                      <a href="#" class="logo">
+                        <img src="./dashboard/img/logo.png" width="160" height="50" alt="Footcap logo">
+                      </a>
+                      <!-- Social Media Links -->
+                      <ul class="social-list">
+                        <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                        <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                        <li><a href="https://www.instagram.com/_mhdali2?igsh=Z2pzaDUza2R0NjA3x" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                        <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                      </ul>
                     </div>
+              
+                    <!-- Footer Links -->
+                    <div class="footer-link-box">
+                      <div class="footer-list">
+                        <p class="footer-list-title">Contact Us</p>
+                        <ul>
+                          <li>
+                            <address class="footer-link">
+                              <ion-icon name="location"></ion-icon>
+                              <span>JL. HR. Soebrantas, Sidomulyo Bar., Kec. Tampan, Kota Pekanbaru, Riau 28293</span>
+                            </address>
+                          </li>
+                          <li>
+                            <a href="tel:+557343673257" class="footer-link">
+                              <ion-icon name="call"></ion-icon> 082288984671
+                            </a>
+                          </li>
+                          <li>
+                            <a href="mailto:footcap@help.com" class="footer-link">
+                              <ion-icon name="mail"></ion-icon> G-Inventory@gmail.com
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+              
+                      <!-- My Account Links -->
+                      <div class="footer-list">
+                        <p class="footer-list-title">My Account</p>
+                        <ul>
+                          <li><a href="#" class="footer-link"><ion-icon name="chevron-forward-outline"></ion-icon> My Account</a></li>
+                          <li><a href="#" class="footer-link"><ion-icon name="chevron-forward-outline"></ion-icon> View Cart</a></li>
+                          <li><a href="#" class="footer-link"><ion-icon name="chevron-forward-outline"></ion-icon> Wishlist</a></li>
+                          <li><a href="#" class="footer-link"><ion-icon name="chevron-forward-outline"></ion-icon> Compare</a></li>
+                          <li><a href="#" class="footer-link"><ion-icon name="chevron-forward-outline"></ion-icon> New Products</a></li>
+                        </ul>
+                      </div>
+              
+                      <!-- Opening Time -->
+                      <div class="footer-list">
+                        <p class="footer-list-title">Opening Time</p>
+                        <table class="footer-table">
+                          <tbody>
+                            <tr>
+                              <th>Mon - Tue:</th>
+                              <td>8AM - 10PM</td>
+                            </tr>
+                            <tr>
+                              <th>Wednesday:</th>
+                              <td>8AM - 7PM</td>
+                            </tr>
+                            <tr>
+                              <th>Friday:</th>
+                              <td>7AM - 12PM</td>
+                            </tr>
+                            <tr>
+                              <th>Saturday:</th>
+                              <td>9AM - 8PM</td>
+                            </tr>
+                            <tr>
+                              <th>Sunday:</th>
+                              <td>Closed</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </footer>
+              
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                  <div class="container">
+                    <p class="copyright">
+                      &copy; 2024 <a href="#" class="copyright-link">G-Inventory</a>
+                    </p>
+                  </div>
+                </div>
+              </footer>
 
         </div>
         <!-- End of Content Wrapper -->
@@ -363,6 +384,15 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+
+    <!-- Pemuatan jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Pemuatan DataTables -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<!-- Pemuatan DataTables Bootstrap -->
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script src="{{ asset('/dashboard/vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

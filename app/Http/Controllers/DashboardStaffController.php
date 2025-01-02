@@ -33,6 +33,7 @@ class DashboardStaffController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
+            'nama' => 'required|string',
             'nik' => 'required|string|max:20',
             'jenis_kelamin' => 'required|string',
             'tempat_lahir' => 'required|string',

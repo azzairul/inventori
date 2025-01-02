@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('detail_users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Relasi ke tabel users
+            $table->string('nama')->nullable(); // Menambahkan kolom nama
             $table->string('nik')->unique()->nullable(); // NIK (Nomor Induk Kependudukan)
             $table->string('alamat')->nullable(); // Alamat Lengkap
             $table->string('instagram')->nullable(); // Alamat Lengkap

@@ -11,14 +11,25 @@ class DetailUser extends Model
 
     protected $fillable = [
         'user_id',
+        'nama',
         'nik',
-        'alamat',
-        'no_telepon',
-        'tanggal_lahir',
         'jenis_kelamin',
-        'riwayat_pendidikan',
-        'posisi_dilamar',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'status',
+        'alamat',
+        'divisi',
+        'jabatan',
+        'no_telepon',
+        'instagram',
+        'twiter',
+        'linkedin',
+        'pendidikan_terakhir',
+        'nama_institusi',
+        'jurusan',
+        'tahun_lulus',
     ];
+    
 
     public function user()
     {

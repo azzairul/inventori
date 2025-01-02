@@ -1,0 +1,190 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic page setup */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #4e73df; /* Blue background */
+    color: white;
+    padding: 12px 0; /* Further reduced padding */
+}
+
+.footer .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px; /* Reduced margin further */
+    flex-wrap: wrap;
+}
+
+/* Footer Brand */
+.footer-brand {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 8px; /* Further reduced padding */
+}
+
+.footer-brand ul {
+    display: flex;
+    list-style: none;
+}
+
+.footer-brand li {
+    margin-right: 12px; /* Reduced space between social icons */
+}
+
+.footer-brand a {
+    color: white;
+    font-size: 20px; /* Reduced font size for logo */
+    transition: color 0.3s ease;
+}
+
+.footer-brand a:hover {
+    color: #ffd700; /* Gold color on hover */
+}
+
+/* Footer Links */
+.footer-link-box {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-list {
+    flex: 1;
+    padding: 6px; /* Reduced padding */
+    list-style: none;
+}
+
+.footer-list-title {
+    font-size: 14px; /* Further reduced font size */
+    font-weight: bold;
+    margin-bottom: 6px; /* Reduced space */
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    font-size: 12px; /* Further reduced font size */
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Reduced space between links */
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #ffd700;
+}
+
+.footer-link ion-icon {
+    margin-right: 5px; /* Further reduced space between icon and text */
+}
+
+/* Footer Table for Opening Times */
+.footer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.footer-table th,
+.footer-table td {
+    text-align: left;
+    padding: 5px; /* Further reduced padding */
+    color: white;
+    font-size: 11px; /* Further reduced font size */
+}
+
+.footer-table tr:nth-child(even) {
+    background-color: #3e5db2; /* Lighter blue */
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    background-color: #375a9b;
+    padding: 6px 0; /* Further reduced padding */
+    text-align: center;
+}
+
+.footer-bottom .copyright {
+    font-size: 12px; /* Reduced font size */
+}
+
+.footer-bottom .copyright a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-bottom .copyright a:hover {
+    color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-link-box {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 12px; /* Further reduced margin */
+    }
+
+    .footer-list {
+        margin-bottom: 12px; /* Reduced margin */
+    }
+
+    .footer-brand {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 12px; /* Reduced margin between logo and social media icons */
+    }
+
+    .footer-brand ul {
+        margin-top: 6px; /* Reduced space between logo and social icons */
+    }
+
+    .footer-table {
+        margin-top: 12px; /* Reduced margin */
+    }
+
+    .footer-table th,
+    .footer-table td {
+        font-size: 10px; /* Further reduced font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-link {
+        font-size: 10px; /* Further reduced font size */
+    }
+
+    .footer-brand a {
+        font-size: 16px; /* Smaller font size for logo */
+    }
+}
+
