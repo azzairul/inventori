@@ -89,13 +89,14 @@
                                 </button>
                         
                                 @if($return->status === 'diterima')
-                                    <form action="#" method="POST" class="d-inline">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sm btn-outline-success">
-                                            <i class="fas fa-undo"></i>
-                                        </button>
-                                    </form>
-                                @endif
+                                <form action="{{ route('pengembalian.return', $return->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-outline-success">
+                                        <i class="fas fa-undo"></i>
+                                    </button>
+                                </form>
+                            @endif
+                            
                             </td>
                         </tr>
                         @endforeach

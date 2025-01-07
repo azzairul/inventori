@@ -153,14 +153,7 @@
                                     <i class="fas fa-folder"></i> <!-- Ikon folder untuk Kategori Dokumentasi -->
                                     Kategori Dokumentasi
                                 </a>
-                                <a class="collapse-item" href="dokumen.html">
-                                    <i class="fas fa-file-alt"></i> <!-- Ikon dokumen untuk Dokumen -->
-                                    Dokumen
-                                </a>
-                                <a class="collapse-item" href="kategori-dokumen.html">
-                                    <i class="fas fa-folder-open"></i> <!-- Ikon folder terbuka untuk Kategori Dokumen -->
-                                    Kategori Dokumen
-                                </a>
+                               
                             </div>
                         </div>
                     </li>
@@ -177,15 +170,25 @@
                         <div id="collapseReports" class="collapse" aria-labelledby="headingReports"
                             data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
-                                <h6 class="collapse-header">Laporan Proses:</h6>
-                                <a class="collapse-item" href="laporan-peminjaman.html">
-                                    <i class="fas fa-file-contract"></i> <!-- Ikon dokumen kontrak untuk Laporan Peminjaman -->
-                                    Laporan Peminjaman
+                                <h6 class="collapse-header">Laporan Peminjaman:</h6>
+                               <!-- Laporan Harian -->
+                                <a class="collapse-item" href="laporan-harian.html">
+                                    <i class="fas fa-calendar-day"></i> <!-- Ikon untuk Laporan Harian -->
+                                    Laporan Harian
                                 </a>
-                                <a class="collapse-item" href="laporan-pengembalian.html">
-                                    <i class="fas fa-clipboard-check"></i> <!-- Ikon clipboard dengan cek untuk Laporan Pengembalian -->
-                                    Laporan Pengembalian
+
+                                <!-- Laporan Bulanan -->
+                                <a class="collapse-item" href="laporan-bulanan.html">
+                                    <i class="fas fa-calendar-week"></i> <!-- Ikon untuk Laporan Bulanan -->
+                                    Laporan Bulanan
                                 </a>
+
+                                <!-- Laporan Tahunan -->
+                                <a class="collapse-item" href="laporan-tahunan.html">
+                                    <i class="fas fa-calendar-alt"></i> <!-- Ikon untuk Laporan Tahunan -->
+                                    Laporan Tahunan
+                                </a>
+
                             </div>
                         </div>
                     </li>
@@ -326,7 +329,7 @@
                     <!-- Footer Brand -->
                     <div class="footer-brand">
                       <a href="#" class="logo">
-                        <img src="./dashboard/img/logo.png" width="160" height="50" alt="Footcap logo">
+                        <img src="./dashboard/img/logo2.png" width="160" height="50" alt="Footcap logo">
                       </a>
                       <!-- Social Media Links -->
                       <ul class="social-list">

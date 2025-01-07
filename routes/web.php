@@ -12,6 +12,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\CategoryDokumentasiController;
+use App\Http\Controllers\PengembalianController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -66,6 +68,7 @@ Route::post('/peminjaman/submit', [PeminjamanController::class, 'submit'])->name
 route::delete('/peminjaman{id}/delete', [PeminjamanController::class, 'destroy'])->name('peminjaman.destroy');
 
 //admin peminjaman
+Route::post('/pengembalian/{id}', [PengajuanController::class, 'returnTransaction'])->name('pengembalian.return');
 Route::get('admin-dashboard/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
 Route::get('peminjaman-items/{id}', [PengajuanController::class, 'show'])->name('pengajuan.show');
 Route::patch('peminjaman/acc/{id}', [PengajuanController::class, 'accTransaction']);
@@ -77,11 +80,14 @@ Route::get('/riwayat/staff-peminjaman',[PeminjamanController::class,'showRiwayat
 Route::get('/api/peminjaman-items/{id}', [PeminjamanController::class, 'getPeminjamanItems']);
 
 //KategoryDokumentasi
-Route::get('admin-dashboard/category_dokumentasi', [CategoryDokumentasiController::class, 'index'])->name('kategori_dokumenntasi.index');
-Route::post('admin-dashboard/category_dokumentasi/store', [CategoryDokumentasiController::class, 'store'])->name('kategori_dokumenntasi.store');
-Route::put('categories/{id}/update', [CategoryDokumentasiController::class, 'update'])->name('kategori_dokumenntasi.update');
-Route::delete('categories/{id}/delete', [CategoryDokumentasiController::class, 'destroy'])->name('kategori_dokumenntasi.destroy');
+Route::get('admin-dashboard/kategori_dokumentasi', [CategoryDokumentasiController::class, 'index'])->name('kategori_dokumentasi.index');
+Route::post('admin-dashboard/kategori_dokumentasi/store', [CategoryDokumentasiController::class, 'store'])->name('kategori_dokumentasi.store');
+Route::put('admin-dashboard/kategori_dokumentasi/{id}', [CategoryDokumentasiController::class, 'update'])->name('kategori_dokumentasi.update');
+Route::delete('admin-dashboard/kategori_dokumentasi/{id}', [CategoryDokumentasiController::class, 'destroy'])->name('kategori_dokumentasi.destroy');
 
 
-
+// Admin Riwayat Peminjaman
+Route::get('/riwayat/admin-peminjaman', [PengajuanController::class, 'showRiwayat'])->name('riwayat.admin');
+Route::get('/staff-dashboard/{id}/pinjaman', [PengajuanController::class, 'detail'])->name('peminjaman.detail');
+Route::delete('/admin-dashboard/item/{id}/delete', [ItemsController::class, 'destroy'])->name('item.destroy');
 

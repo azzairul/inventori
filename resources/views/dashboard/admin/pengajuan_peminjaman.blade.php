@@ -56,7 +56,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $x->no_transaksi }}</td>
                             <td>{{ $x->tanggal_peminjaman }}</td>
-                            <td>20 Desember</td>
+                            <td>{{ $x->tanggal_pengembalian }}</td>
                             <td>{{ $x->jam_peminjaman }}</td>
                             <td>{{ $x->nama_peminjam }}</td>
                             <td>

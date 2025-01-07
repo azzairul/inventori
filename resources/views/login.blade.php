@@ -39,7 +39,7 @@
             <div class="card p-4">
                 <div class="card-body">
                     <h3 class="text-center mb-4 text-primary">Selamat Datang Kembali</h3>
-                    <p class="text-center text-muted mb-4">Masuk untuk melanjutkan</p>
+                    <p class="text-center text-muted mb-4">Login untuk melanjutkan</p>
                     @if($errors->any())
                         <div class="alert alert-danger">
                             <ul class="mb-0">
@@ -78,10 +78,6 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100 py-2">Masuk</button>
                     </form>
-                    <hr class="my-4">
-                    <p class="text-center text-muted">Belum punya akun? 
-                        <a href="#" class="text-primary" style="text-decoration: none;">Daftar</a>
-                    </p>
                 </div>
             </div>
         </div>

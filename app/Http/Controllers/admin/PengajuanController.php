@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Models\Peminjaman;
+use Illuminate\Http\Request;
 use App\Models\PeminjamanItem;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class PengajuanController extends Controller
 {
@@ -18,11 +19,11 @@ class PengajuanController extends Controller
 
         $peminjaman = Peminjaman::all();
 
-        return view('dashboard.admin.pengajuan_peminjaman',array_merge($data,compact('peminjaman')));
+        return view('dashboard.admin.pengajuan_peminjaman', array_merge($data, compact('peminjaman')));
     }
 
     public function show($id)
-    {   
+    {
         // Ambil data berdasarkan peminjaman_id
         $items = PeminjamanItem::with('item.category') // Relasi ke model Items dan Category
             ->where('peminjaman_id', $id)
@@ -84,6 +85,34 @@ class PengajuanController extends Controller
         $peminjaman->save();
 
         return response()->json(['message' => 'Peminjaman berhasil ditolak.']);
-
     }
-} 
+
+    public function returnTransaction($id)
+    {
+        try {
+            // Temukan peminjaman berdasarkan ID
+            $peminjaman = Peminjaman::find($id);
+
+            if (!$peminjaman) {
+                return redirect()->back()->with('error', 'Peminjaman tidak ditemukan.');
+            }
+
+            // Pindahkan data dari tabel peminjaman ke tabel riwayat_pengembalian
+            DB::table('riwayat_pengembalian')->insert([
+                'no_transaksi' => $peminjaman->no_transaksi,
+                'tanggal_peminjaman' => $peminjaman->tanggal_peminjaman,
+                'tanggal_pengembalian' => $peminjaman->tanggal_pengembalian,
+                'jam_peminjaman' => $peminjaman->jam_peminjaman,
+                'nama_peminjam' => $peminjaman->nama_peminjam,
+                'alasan_peminjaman' => $peminjaman->alasan_peminjaman,
+                'status' => $peminjaman->status,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            return redirect()->back()->with('success', 'Pengembalian berhasil dicatat ke riwayat.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+}

@@ -7,6 +7,7 @@ use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use App\Models\Riwayat;
 use App\Models\PeminjamanItem;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 class PeminjamanController extends Controller
@@ -25,7 +26,7 @@ class PeminjamanController extends Controller
             'title' => 'Peminjaman-Staff',
         ];
         
-        $peminjaman = Peminjaman::where('user_id', auth()->id())->get();
+        $peminjaman = Peminjaman::where('user_id', auth()->user()->id)->get();
 
         return view('dashboard.staff.peminjaman.index',array_merge($data,compact('peminjaman')));
     }
@@ -38,13 +39,15 @@ class PeminjamanController extends Controller
             'jam_peminjaman' => 'required',
         ]);
 
+        $user = User::where('id', auth()->user()->id)->first();
+
         $peminjaman = Peminjaman::create([
             'no_transaksi' => $this->generateNoTransaksi(),
             'tanggal_peminjaman' => $request->tanggal_peminjaman,
             'tanggal_pengembalian' => $request->tanggal_pengembalian,
             'jam_peminjaman' => $request->jam_peminjaman,
-            'nama_peminjam' => auth()->user()->name,
-            'user_id' => auth()->id(),
+            'nama_peminjam' => $user->name,
+            'user_id' => $user->id,
         ]);
 
         $peminjaman->riwayat()->create([
@@ -76,7 +79,7 @@ class PeminjamanController extends Controller
         ]);
 
         // Cari peminjaman berdasarkan user login
-        $peminjaman = Peminjaman::where('user_id', auth()->id())->latest()->first();
+        $peminjaman = Peminjaman::where('user_id', auth()->user()->id)->latest()->first();
 
         if (!$peminjaman) {
             return response()->json(['error' => 'Tidak ada transaksi peminjaman ditemukan'], 404);
@@ -103,7 +106,6 @@ class PeminjamanController extends Controller
         return response()->json(['message' => 'Peminjaman berhasil diajukan']);
     }
 
-
     public function showRiwayat(Request $request)
     {
         $data = [
@@ -111,7 +113,7 @@ class PeminjamanController extends Controller
         ];
         $order = $request->get('order', 'desc');
         $returns = Peminjaman::with('items')
-            ->where('user_id', auth()->id())
+            ->where('user_id', auth()->user()->id)
             ->orderBy('created_at', $order)
             ->get();
     
